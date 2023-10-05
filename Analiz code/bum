@@ -1,57 +1,56 @@
 #include <stdlib.h>
 #include <iostream>
 
-struct TwoInts
+struct TwoInts // в TwoInts содержатся переменные a и b
 {
-    int a;
-    int b;
+    int a; // перерменая a 
+    int b; // перерменая b
 };
 
-struct StructWithArray
+struct StructWithArray // в StructWithArray содержится массив и указатель someNumber 
 {
-    int arr[4];
-    int* someNumber;
+    int arr[4]; // массив из 4 элементов
+    int* someNumber; //  int указывает, что someNumber имеет целочисленные значения
 };
 
 int main()
 {
-    TwoInts i2 = { };
-    i2.a = 5;
-    i2.b = 7;
+    TwoInts i2 = { };  // определяется структура TwoInts с i2
+    i2.a = 5; // элемент структуры а, присваивается значение 5
+    i2.b = 7; // элемент структуры b, присваивается значение 7
 
-    std::cout << i2.a << std::endl;
-    std::cout << i2.b << std::endl;
+    std::cout << i2.a << std::endl; // выводится i2.a
+    std::cout << i2.b << std::endl; // выводится i2.b
     
-    StructWithArray s = { };
-    s.arr[0] = 10;
+    StructWithArray s = { }; // определяется структура StructWithArray c s 
+    s.arr[0] = 10; //  присваивается первому элементу arr значение 10 из структуры s 
 
-    StructWithArray s1 = { };
-    s1.arr[0] = 15;
+    StructWithArray s1 = { }; //определяется структура StructWithArray c s1 
+    s1.arr[0] = 15; // присваивается первому элементу arr значение 15 из структуры s1 
 
-    StructWithArray* sPointer = &s;
-    sPointer->arr[0] = 20;
+    StructWithArray* sPointer = &s; //указывает на переменую s и сохраняет значение s в sPointer
+    sPointer->arr[0] = 20; //первый элемент arr примит значение 20
 
-    std::cout << s.arr[0] << std::endl;
-    s.arr[0] = 25;
-    std::cout << s.arr[0] << std::endl;
-    sPointer->arr[0] = 30;
-    std::cout << s.arr[0] << std::endl;
+    std::cout << s.arr[0] << std::endl; // вывод первого элемента arr из структуры s
+    s.arr[0] = 25; // присваивается первому элементу arr значение 25 из структуры s 
+    std::cout << s.arr[0] << std::endl; //  вывод первого элемента arr из структуры s
+    sPointer->arr[0] = 30; //первый элемент arr примит значение из 25 в 30
+    std::cout << s.arr[0] << std::endl;// вывод первого элемента arr из структуры s 
 
-    sPointer = &s1;
-    sPointer->arr[0] = 35;
-    std::cout << s.arr[0] << std::endl;
-    std::cout << s1.arr[0] << std::endl;
+    sPointer = &s1; // преключает на  s1
+    sPointer->arr[0] = 35; //   sPointer изменяет значение в структуре s1
+    std::cout << s.arr[0] << std::endl; //  вывод первого элемента arr из структуры s = 30
+    std::cout << s1.arr[0] << std::endl; //вывод первого элемента arr из структуры s1 = 35
 
-    StructWithArray structArray[2] = { };
-    structArray[0].arr[3] = 77;
-    structArray[1].someNumber = &structArray[0].arr[3];
+    StructWithArray structArray[2] = { }; // structArray содержит 2 нулевых переменые
+    structArray[0].arr[3] = 77; //меняется 3 элемент массива в первом элементе массива структур на 77
+    structArray[1].someNumber = &structArray[0].arr[3]; // адресс памяти из structArray[0].arr[3] вписывается в structArray[1]
 
-    sPointer = &s;
-    int* pointer = &sPointer->arr[3];
-    s.arr[3] = 72;
-    std::cout << *pointer;
-
-    StructWithArray memory;
-    memset(&memory, 0, sizeof(StructWithArray));
+    sPointer = &s; // прекоючается на значение s
+    int* pointer = &sPointer->arr[3]; //
+    s.arr[3] = 72; //
+    std::cout << *pointer; //
+    StructWithArray memory; //
+    memset(&memory, 0, sizeof(StructWithArray)); //
     return 0;
 }
