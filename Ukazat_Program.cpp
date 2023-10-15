@@ -13,9 +13,8 @@ int main()
     *pointertoi = 15;
     int *pointerToArr = &arr[0];
     pointerToArr = pointerToArr + 2;
-    int *pointerToArr = &arr[0];
-    pointerToArr = 5;
-    int *iPointer = &arr[2];
+    *pointerToArr = 5; // исправила ↓
+    iPointer = &arr[2]; 
     *iPointer = 6;
 
     return 0;
